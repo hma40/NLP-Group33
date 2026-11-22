@@ -1,0 +1,145 @@
+{
+  "dataset": "sarc",
+  "seed": 42,
+  "metadata": {
+    "annotation": "Author self-annotation using /s",
+    "release": "Official SARC 2.0 main balanced",
+    "full_partition_counts": {
+      "train": {
+        "count": 257082,
+        "positive": 128541,
+        "negative": 128541
+      },
+      "test": {
+        "count": 64666,
+        "positive": 32333,
+        "negative": 32333
+      }
+    },
+    "requested_training_pool": 10000,
+    "requested_test_sample": 2000,
+    "limitations": "Sampled official test, not full published benchmark; balanced corpus does not represent natural prevalence. Non-sarcastic labels may include unmarked sarcasm.",
+    "sampling": "Seed 42 response reservoir separately per official partition; fixed test sample independent of training pool size. Sample before cleaning; final sizes may be smaller."
+  },
+  "input": {
+    "count": 12000,
+    "negative": 6021,
+    "positive": 5979,
+    "positive_percent": 49.825,
+    "mean_characters": 54.7435,
+    "median_characters": 45.0,
+    "mean_words": 10.102833333333333,
+    "context_count": 12000,
+    "irony_categories": []
+  },
+  "missing_original_text": 0,
+  "raw_missing_values": {
+    "text": 0,
+    "author": 0,
+    "score": 0,
+    "ups": 0,
+    "downs": 0,
+    "created_utc": 0,
+    "date": 0,
+    "subreddit": 0,
+    "id": 0,
+    "label": 0,
+    "comment_id": 0,
+    "partition": 0,
+    "conversation_id": 0,
+    "ancestor_ids": 0,
+    "parent_comment": 0,
+    "context": 0
+  },
+  "missing_values": {
+    "text": 0,
+    "author": 0,
+    "score": 0,
+    "ups": 0,
+    "downs": 0,
+    "created_utc": 0,
+    "date": 0,
+    "subreddit": 0,
+    "id": 0,
+    "label": 0,
+    "comment_id": 0,
+    "partition": 0,
+    "conversation_id": 0,
+    "ancestor_ids": 0,
+    "parent_comment": 0,
+    "context": 0,
+    "source": 0,
+    "platform": 0,
+    "original_text": 0,
+    "irony_type": 0,
+    "rephrasing": 0
+  },
+  "markers_removed_rows": 0,
+  "trimmed_or_marker_cleaned_rows": 0,
+  "empty_text_rows": 0,
+  "exact_duplicate_rows": 59,
+  "conflicting_text_groups": 31,
+  "conflicting_rows": 111,
+  "near_duplicate_pairs_cosine_095": 37,
+  "removed_empty_or_conflicting_train_rows": 78,
+  "removed_duplicate_train_rows": 15,
+  "removed_train_rows_linked_to_official_test": 158,
+  "test_policy": "All loaded official test rows retained; linked training components excluded.",
+  "splits": {
+    "train": {
+      "count": 7802,
+      "negative": 3895,
+      "positive": 3907,
+      "positive_percent": 50.0769033581133,
+      "mean_characters": 55.19084850038452,
+      "median_characters": 45.0,
+      "mean_words": 10.187387849269419,
+      "context_count": 7802,
+      "irony_categories": [],
+      "csv_sha256": "8f72c154e0a1ca10e5067a5ba428bec37365780b0510902d946cd782bc2c17d6"
+    },
+    "dev": {
+      "count": 1947,
+      "negative": 972,
+      "positive": 975,
+      "positive_percent": 50.077041602465336,
+      "mean_characters": 55.27221366204417,
+      "median_characters": 46.0,
+      "mean_words": 10.200821777092964,
+      "context_count": 1947,
+      "irony_categories": [],
+      "csv_sha256": "af280d4b1f84ee9edebc9700b5ede40e1fbdfa11a9857c7dc356c3aaa8829f96"
+    },
+    "test": {
+      "count": 2000,
+      "negative": 1031,
+      "positive": 969,
+      "positive_percent": 48.449999999999996,
+      "mean_characters": 54.7635,
+      "median_characters": 45.0,
+      "mean_words": 10.1325,
+      "context_count": 2000,
+      "irony_categories": [],
+      "csv_sha256": "8c3cc1cd1443e989c1867bf1a6ced82d9096889224c3ee7ade70642cc94c9902"
+    }
+  },
+  "processed": {
+    "count": 11749,
+    "negative": 5898,
+    "positive": 5851,
+    "positive_percent": 49.79998297727466,
+    "mean_characters": 55.13158566686526,
+    "median_characters": 45.0,
+    "mean_words": 10.18027066133288,
+    "context_count": 11749,
+    "irony_categories": []
+  },
+  "removed_total": 251,
+  "split_percentages": {
+    "train": 66.40565154481233,
+    "dev": 16.57162311686101,
+    "test": 17.022725338326666
+  },
+  "largest_group": 5,
+  "official_test_empty_text_rows": 0
+}

@@ -1,6 +1,6 @@
 # NLP Group 33 — Detecting Verbal Irony in Social Media
 
-Phase 1 prepares five datasets for independent model development. No classifiers or experimental scores are implemented here. SemEval 2018 is the primary irony benchmark; the other datasets use sarcasm labels with different annotation methods.
+Phase 1 prepares the original five irony/sarcasm datasets plus two auxiliary humor/idiom datasets. No classifiers or experimental scores are implemented here. SemEval 2018 remains the primary irony benchmark. Read the [November 21 expansion report](docs/FIGURATIVE_EXPANSION.md) for the response to proposal feedback, source selection, new task meanings and limitations.
 
 ## Windows quick start
 
@@ -13,7 +13,7 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe src/preprocess.py --dataset semeval2018
 ```
 
-SemEval 2018 is then ready at `Data/Processed/semeval2018/{train,dev,test}.csv` with 3,067 / 767 / 784 examples. For all five datasets, including both FigLang platforms and a manageable official SARC sample:
+SemEval 2018 is then ready at `Data/Processed/semeval2018/{train,dev,test}.csv` with 3,067 / 767 / 784 examples. For all seven datasets, including both FigLang platforms, a manageable official SARC sample, humor and English idioms:
 
 ```powershell
 .\.venv\Scripts\python.exe src/download_data.py --dataset all
@@ -30,7 +30,11 @@ The existing `Data/Raw` and `Data/Processed` capitalization is preserved for com
 
 ## Model interface for teammates
 
-Each directory has identical train/dev/test CSV names. The six prepared portions are `semeval2018`, `semeval2022`, `figlang2020/twitter`, `figlang2020/reddit`, `sarc`, and `nikesh66`.
+Each directory has identical train/dev/test CSV names. The eight prepared portions are `semeval2018`, `semeval2022`, `figlang2020/twitter`, `figlang2020/reddit`, `sarc`, `nikesh66`, `hahackathon`, and `semeval2022_idioms`.
+
+The added tasks remain independent: `hahackathon` uses 1 = humorous (7,996 / 1,000 / 1,000); `semeval2022_idioms` uses 1 = idiomatic use of the specified MWE (3,043 / 378 / 372). Idiom splits are new local MWE-disjoint splits because official test gold is unavailable. Its separate `unlabeled_official_test.csv` has 916 English texts and must not enter labeled evaluation. Consult `src/dataset_catalog.py` for task meanings; do not treat humor/idiom labels as sarcasm gold or combine them into exclusive classes.
+
+For idiomaticity, supply `mwe` to identify the target expression. `context` holds the preceding sentence and `following_context` the following sentence. Keep `source_label` and human annotations out of model inputs. Unlike the original sarcasm datasets, these new tasks retain sarcasm hashtags because they do not reveal humor/idiom gold labels.
 
 ```python
 from pathlib import Path
@@ -65,6 +69,6 @@ The source pool must exceed the largest desired training size because of the 20%
 - `results/dataset_statistics/*.json`: detailed per-dataset missing-value, duplicate, conflict, cleaning and split audits, source-size metadata, and output checksums.
 - `results/dataset_statistics/cross_dataset*_overlap.csv`: transfer-experiment overlap diagnostics. FigLang Reddit and the SARC sample share 177 normalized targets; filter source training against target evaluation in a separately documented derived experiment before interpreting transfer scores.
 - `results/figures/`: class distributions, length histograms, split sizes and size comparison. SARC charts describe the sample.
-- `Notebooks/01_...` through `06_...`: individual exploration and consolidated comparison. Notebooks show aggregates, avoiding restricted tweet text in outputs. The original `exploration.ipynb` is preserved.
+- `Notebooks/01_...` through `08_...`: individual exploration and consolidated comparison (06), including humor (07) and idioms (08). Notebooks show aggregates, avoiding restricted text in outputs. The original `exploration.ipynb` is preserved.
 
 Model placeholders owned by Yumi, Sai, Solus and the group are preserved. No weights, corpus text, commits or pushes are created for sharing. Only aggregate statistics, code, plots, source manifests and documentation are intended for repository review. The nikesh66 results are exploratory: its 5,000 input rows yield 224 nonconflicting unique texts and are split by template, with unverified provenance.

@@ -1,0 +1,238 @@
+{
+  "verified_date": "2026-11-20",
+  "files": [
+    {
+      "dataset": "semeval2018",
+      "path": "Data/Raw/semeval2018/datasets/goldtest_TaskA/SemEval2018-T3_gold_test_taskA_emoji.txt",
+      "url": "https://raw.githubusercontent.com/Cyvhee/SemEval2018-Task3/313b94c080e78544d6504192c8a1d425f6b7d719/datasets/goldtest_TaskA/SemEval2018-T3_gold_test_taskA_emoji.txt",
+      "revision": "313b94c080e78544d6504192c8a1d425f6b7d719",
+      "bytes": 79973,
+      "sha256": "b63a3825aee72592d7e565d3f8c75ff6ce695fa67ea28f2c5c0c4171f67bc5cd"
+    },
+    {
+      "dataset": "semeval2018",
+      "path": "Data/Raw/semeval2018/datasets/goldtest_TaskB/SemEval2018-T3_gold_test_taskB_emoji.txt",
+      "url": "https://raw.githubusercontent.com/Cyvhee/SemEval2018-Task3/313b94c080e78544d6504192c8a1d425f6b7d719/datasets/goldtest_TaskB/SemEval2018-T3_gold_test_taskB_emoji.txt",
+      "revision": "313b94c080e78544d6504192c8a1d425f6b7d719",
+      "bytes": 79973,
+      "sha256": "586c4f071199ed9f5fa0cbf85958001a72c3b43b9d4796a38ab6116ae54d551b"
+    },
+    {
+      "dataset": "semeval2018",
+      "path": "Data/Raw/semeval2018/datasets/README.md",
+      "url": "https://raw.githubusercontent.com/Cyvhee/SemEval2018-Task3/313b94c080e78544d6504192c8a1d425f6b7d719/datasets/README.md",
+      "revision": "313b94c080e78544d6504192c8a1d425f6b7d719",
+      "bytes": 791,
+      "sha256": "e06a8f93f17593d9d3110f8550c5546f36e1918dc5e895a787fd87b01bf09141"
+    },
+    {
+      "dataset": "semeval2018",
+      "path": "Data/Raw/semeval2018/datasets/train/README.md",
+      "url": "https://raw.githubusercontent.com/Cyvhee/SemEval2018-Task3/313b94c080e78544d6504192c8a1d425f6b7d719/datasets/train/README.md",
+      "revision": "313b94c080e78544d6504192c8a1d425f6b7d719",
+      "bytes": 3718,
+      "sha256": "098f566049c09ffa86905b4ca1e2a90127a13dd81e882bf532a30a287e358acc"
+    },
+    {
+      "dataset": "semeval2018",
+      "path": "Data/Raw/semeval2018/datasets/train/SemEval2018-T3-train-taskA_emoji.txt",
+      "url": "https://raw.githubusercontent.com/Cyvhee/SemEval2018-Task3/313b94c080e78544d6504192c8a1d425f6b7d719/datasets/train/SemEval2018-T3-train-taskA_emoji.txt",
+      "revision": "313b94c080e78544d6504192c8a1d425f6b7d719",
+      "bytes": 367132,
+      "sha256": "aa2b955b4e80f96e98b0bc9a1db70ccfcdf13221570c04329f8e499e230ea923"
+    },
+    {
+      "dataset": "semeval2018",
+      "path": "Data/Raw/semeval2018/datasets/train/SemEval2018-T3-train-taskB_emoji.txt",
+      "url": "https://raw.githubusercontent.com/Cyvhee/SemEval2018-Task3/313b94c080e78544d6504192c8a1d425f6b7d719/datasets/train/SemEval2018-T3-train-taskB_emoji.txt",
+      "revision": "313b94c080e78544d6504192c8a1d425f6b7d719",
+      "bytes": 367134,
+      "sha256": "1bf861ee4dd3e3fa5441451ac84b091b226ce2e87f6a2998987d8219c88d0529"
+    },
+    {
+      "dataset": "semeval2018",
+      "path": "Data/Raw/semeval2018/README.md",
+      "url": "https://raw.githubusercontent.com/Cyvhee/SemEval2018-Task3/313b94c080e78544d6504192c8a1d425f6b7d719/README.md",
+      "revision": "313b94c080e78544d6504192c8a1d425f6b7d719",
+      "bytes": 1011,
+      "sha256": "af6b41fc010681e546654ba19152a20fa1ebf7d505798aae9f2a5f9b278e06dc"
+    },
+    {
+      "dataset": "semeval2022",
+      "path": "Data/Raw/semeval2022/LICENSE",
+      "url": "https://raw.githubusercontent.com/iabufarha/iSarcasmEval/dfc708b53bde1bb571abfb5692f63231c2232195/LICENSE",
+      "revision": "dfc708b53bde1bb571abfb5692f63231c2232195",
+      "bytes": 1074,
+      "sha256": "f956625f01a15c08af3be7d32480d39d8302fc36f52075c484a004e8e849835f"
+    },
+    {
+      "dataset": "semeval2022",
+      "path": "Data/Raw/semeval2022/README.md",
+      "url": "https://raw.githubusercontent.com/iabufarha/iSarcasmEval/dfc708b53bde1bb571abfb5692f63231c2232195/README.md",
+      "revision": "dfc708b53bde1bb571abfb5692f63231c2232195",
+      "bytes": 4309,
+      "sha256": "98c79b76a4b5dc0e3cc2fb4e9653048e6c9a7156d6e2b1eacacf296b7acebb30"
+    },
+    {
+      "dataset": "semeval2022",
+      "path": "Data/Raw/semeval2022/test/task_A_En_test.csv",
+      "url": "https://raw.githubusercontent.com/iabufarha/iSarcasmEval/dfc708b53bde1bb571abfb5692f63231c2232195/test/task_A_En_test.csv",
+      "revision": "dfc708b53bde1bb571abfb5692f63231c2232195",
+      "bytes": 130890,
+      "sha256": "0ea25619ca3358ecc8440daac1b9bba4d18455bf5b76d874d8dd6a959e72fc49"
+    },
+    {
+      "dataset": "semeval2022",
+      "path": "Data/Raw/semeval2022/train/train.En.csv",
+      "url": "https://raw.githubusercontent.com/iabufarha/iSarcasmEval/dfc708b53bde1bb571abfb5692f63231c2232195/train/train.En.csv",
+      "revision": "dfc708b53bde1bb571abfb5692f63231c2232195",
+      "bytes": 491395,
+      "sha256": "fde737b69caffbcf81ebe79858ad16ac21881573c308343cd5219c4f7a800ae7"
+    },
+    {
+      "dataset": "figlang2020",
+      "path": "Data/Raw/figlang2020/README.md",
+      "url": "https://raw.githubusercontent.com/EducationalTestingService/sarcasm/a3cf26d81909cc4801b2fd77faf3287ec9e7372d/README.md",
+      "revision": "a3cf26d81909cc4801b2fd77faf3287ec9e7372d",
+      "bytes": 2544,
+      "sha256": "af0988d598ec4f89581dc434cb65d3e1f25adb595a3a857f7020c7f3ad216c33"
+    },
+    {
+      "dataset": "figlang2020",
+      "path": "Data/Raw/figlang2020/reddit/sarcasm_detection_shared_task_reddit_testing.jsonl",
+      "url": "https://raw.githubusercontent.com/EducationalTestingService/sarcasm/a3cf26d81909cc4801b2fd77faf3287ec9e7372d/reddit/sarcasm_detection_shared_task_reddit_testing.jsonl",
+      "revision": "a3cf26d81909cc4801b2fd77faf3287ec9e7372d",
+      "bytes": 1094875,
+      "sha256": "401a451af95f89c402c48a83c66034c2c8931aade35a73b2907d03f0efbffb95"
+    },
+    {
+      "dataset": "figlang2020",
+      "path": "Data/Raw/figlang2020/reddit/sarcasm_detection_shared_task_reddit_training.jsonl",
+      "url": "https://raw.githubusercontent.com/EducationalTestingService/sarcasm/a3cf26d81909cc4801b2fd77faf3287ec9e7372d/reddit/sarcasm_detection_shared_task_reddit_training.jsonl",
+      "revision": "a3cf26d81909cc4801b2fd77faf3287ec9e7372d",
+      "bytes": 1392558,
+      "sha256": "aa69ff5a809e63b3336fa297dbfbd1d8f884c27dd68001b0633c128ad5f07059"
+    },
+    {
+      "dataset": "figlang2020",
+      "path": "Data/Raw/figlang2020/twitter/sarcasm_detection_shared_task_twitter_testing.jsonl",
+      "url": "https://raw.githubusercontent.com/EducationalTestingService/sarcasm/a3cf26d81909cc4801b2fd77faf3287ec9e7372d/twitter/sarcasm_detection_shared_task_twitter_testing.jsonl",
+      "revision": "a3cf26d81909cc4801b2fd77faf3287ec9e7372d",
+      "bytes": 1317439,
+      "sha256": "bed4954c4fc98810f6a1c22e5ac5a027c7d0df283d770d8113a64d5fe9fefae3"
+    },
+    {
+      "dataset": "figlang2020",
+      "path": "Data/Raw/figlang2020/twitter/sarcasm_detection_shared_task_twitter_training.jsonl",
+      "url": "https://raw.githubusercontent.com/EducationalTestingService/sarcasm/a3cf26d81909cc4801b2fd77faf3287ec9e7372d/twitter/sarcasm_detection_shared_task_twitter_training.jsonl",
+      "revision": "a3cf26d81909cc4801b2fd77faf3287ec9e7372d",
+      "bytes": 3871480,
+      "sha256": "c5180db39589d4ff93fa5c07fa44888dab6694cddd50b08c938c71445156cecf"
+    },
+    {
+      "dataset": "sarc",
+      "path": "Data/Raw/sarc/main/comments.json.bz2",
+      "url": "https://nlp.cs.princeton.edu/old/SARC/2.0/main/comments.json.bz2",
+      "revision": "SARC 2.0 archived official files",
+      "bytes": 447876208,
+      "sha256": "1fdfbd2a2fddf5c97daa0b11b01f3eed00b4de63c3031128b4e811615842faa9"
+    },
+    {
+      "dataset": "sarc",
+      "path": "Data/Raw/sarc/main/test-balanced.csv.bz2",
+      "url": "https://nlp.cs.princeton.edu/old/SARC/2.0/main/test-balanced.csv.bz2",
+      "revision": "SARC 2.0 archived official files",
+      "bytes": 489950,
+      "sha256": "fd13e0543ac7d1118c667cf39c8373362d8ca1e9a076ae1de18e3798f3f22ac6"
+    },
+    {
+      "dataset": "sarc",
+      "path": "Data/Raw/sarc/main/train-balanced.csv.bz2",
+      "url": "https://nlp.cs.princeton.edu/old/SARC/2.0/main/train-balanced.csv.bz2",
+      "revision": "SARC 2.0 archived official files",
+      "bytes": 1839927,
+      "sha256": "44c16662122c4b24790eb43db47bdc3c79d703c7bcdf95c05383ea2c9552b9f3"
+    },
+    {
+      "dataset": "sarc",
+      "path": "Data/Raw/sarc/readme.txt",
+      "url": "https://nlp.cs.princeton.edu/old/SARC/2.0/readme.txt",
+      "revision": "SARC 2.0 archived official files",
+      "bytes": 2132,
+      "sha256": "c800443fe9d5dd52e0f20773ee4f9dac0084168916c6830087beca8f3eb0b070"
+    },
+    {
+      "dataset": "nikesh66",
+      "path": "Data/Raw/nikesh66/README.md",
+      "url": "https://huggingface.co/datasets/nikesh66/Sarcasm-dataset/resolve/426f9adc95648482d56d83a58fac80bc5e5ef813/README.md",
+      "revision": "426f9adc95648482d56d83a58fac80bc5e5ef813",
+      "bytes": 420,
+      "sha256": "de6b8d366d08d50fdf7649067f9e3b3cf89c212c0a1481567383ac20ac3be748"
+    },
+    {
+      "dataset": "nikesh66",
+      "path": "Data/Raw/nikesh66/sarcasm_tweets.csv",
+      "url": "https://huggingface.co/datasets/nikesh66/Sarcasm-dataset/resolve/426f9adc95648482d56d83a58fac80bc5e5ef813/sarcasm_tweets.csv",
+      "revision": "426f9adc95648482d56d83a58fac80bc5e5ef813",
+      "bytes": 207992,
+      "sha256": "36d4d4b22bc45348545362988aa41972e4bc0de7c8eac1a6d846e50a0dda492e"
+    },
+    {
+      "dataset": "semeval2022_idioms",
+      "path": "Data/Raw/semeval2022_idioms/README.md",
+      "url": "https://raw.githubusercontent.com/H-TayyarMadabushi/SemEval_2022_Task2-idiomaticity/872625c8f9c5d656b7866ff063a2ab0238ac4c80/README.md",
+      "revision": "872625c8f9c5d656b7866ff063a2ab0238ac4c80",
+      "bytes": 1443,
+      "sha256": "e825fbdccfd6934fb81e0b03384bb3b9f3fe844b8f697d1ab8b67dcbc5151ba4"
+    },
+    {
+      "dataset": "semeval2022_idioms",
+      "path": "Data/Raw/semeval2022_idioms/LICENSE",
+      "url": "https://raw.githubusercontent.com/H-TayyarMadabushi/SemEval_2022_Task2-idiomaticity/872625c8f9c5d656b7866ff063a2ab0238ac4c80/LICENSE",
+      "revision": "872625c8f9c5d656b7866ff063a2ab0238ac4c80",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "dataset": "semeval2022_idioms",
+      "path": "Data/Raw/semeval2022_idioms/SubTaskA/Data/train_zero_shot.csv",
+      "url": "https://raw.githubusercontent.com/H-TayyarMadabushi/SemEval_2022_Task2-idiomaticity/872625c8f9c5d656b7866ff063a2ab0238ac4c80/SubTaskA/Data/train_zero_shot.csv",
+      "revision": "872625c8f9c5d656b7866ff063a2ab0238ac4c80",
+      "bytes": 2235861,
+      "sha256": "4bfe249d769760fb4df417f293df28add40ae3c8bfc085e1d8d16284598875d1"
+    },
+    {
+      "dataset": "semeval2022_idioms",
+      "path": "Data/Raw/semeval2022_idioms/SubTaskA/Data/dev.csv",
+      "url": "https://raw.githubusercontent.com/H-TayyarMadabushi/SemEval_2022_Task2-idiomaticity/872625c8f9c5d656b7866ff063a2ab0238ac4c80/SubTaskA/Data/dev.csv",
+      "revision": "872625c8f9c5d656b7866ff063a2ab0238ac4c80",
+      "bytes": 334344,
+      "sha256": "360cac1db795515defc7402a1450ae813f96a546aebf7711c1aa910e35ddea8e"
+    },
+    {
+      "dataset": "semeval2022_idioms",
+      "path": "Data/Raw/semeval2022_idioms/SubTaskA/Data/dev_gold.csv",
+      "url": "https://raw.githubusercontent.com/H-TayyarMadabushi/SemEval_2022_Task2-idiomaticity/872625c8f9c5d656b7866ff063a2ab0238ac4c80/SubTaskA/Data/dev_gold.csv",
+      "revision": "872625c8f9c5d656b7866ff063a2ab0238ac4c80",
+      "bytes": 18592,
+      "sha256": "57415fc19408ab3cc24a65d43868f2b07fd5e6957070f641dee4af13babf38f9"
+    },
+    {
+      "dataset": "semeval2022_idioms",
+      "path": "Data/Raw/semeval2022_idioms/SubTaskA/TestData/test.csv",
+      "url": "https://raw.githubusercontent.com/H-TayyarMadabushi/SemEval_2022_Task2-idiomaticity/872625c8f9c5d656b7866ff063a2ab0238ac4c80/SubTaskA/TestData/test.csv",
+      "revision": "872625c8f9c5d656b7866ff063a2ab0238ac4c80",
+      "bytes": 1077243,
+      "sha256": "ce57e1d434ea36c8352b64e28f1ad8f5a31ac33230f04e670dba7c4ff1c18182"
+    },
+    {
+      "dataset": "hahackathon",
+      "path": "Data/Raw/hahackathon/hahackathon_data.zip",
+      "url": "https://smash.inf.ed.ac.uk/hahackathon_data/hahackathon_data.zip",
+      "revision": "Organizer archive, retrieved 2026-11-21; checksum pinned",
+      "bytes": 571603,
+      "sha256": "57898f53513147fcfc4410d441510df1b05f9e952e2c91317e00d5569856f660"
+    }
+  ],
+  "expanded_date": "2026-11-21"
+}

@@ -1,0 +1,111 @@
+{
+  "dataset": "nikesh66",
+  "seed": 42,
+  "metadata": {
+    "annotation": "Undocumented; yes/no labels interpreted using actual sarcasm column, not card slang description",
+    "limitations": "Exploratory only. No license or collection/annotation method in card; card incorrectly describes slang. Template subjects inferred from observed corpus, no claim of verified synthetic generation.",
+    "template_policy": "Mask 15 observed subject phrases; retain entire resulting template within a split."
+  },
+  "input": {
+    "count": 5000,
+    "negative": 2479,
+    "positive": 2521,
+    "positive_percent": 50.42,
+    "mean_characters": 36.5836,
+    "median_characters": 34.0,
+    "mean_words": 6.2992,
+    "context_count": 0,
+    "irony_categories": []
+  },
+  "missing_original_text": 0,
+  "raw_missing_values": {
+    "text": 0,
+    "label": 0,
+    "id": 0,
+    "partition": 0,
+    "template_id": 0
+  },
+  "missing_values": {
+    "text": 0,
+    "label": 0,
+    "id": 0,
+    "partition": 0,
+    "template_id": 0,
+    "source": 0,
+    "platform": 0,
+    "original_text": 0,
+    "context": 0,
+    "irony_type": 0,
+    "rephrasing": 0,
+    "conversation_id": 0,
+    "author": 0,
+    "parent_comment": 0
+  },
+  "markers_removed_rows": 0,
+  "trimmed_or_marker_cleaned_rows": 0,
+  "empty_text_rows": 0,
+  "exact_duplicate_rows": 4760,
+  "conflicting_text_groups": 16,
+  "conflicting_rows": 615,
+  "near_duplicate_pairs_cosine_095": 0,
+  "removed_empty_or_conflicting_train_rows": 615,
+  "removed_duplicate_train_rows": 4161,
+  "test_policy": "New group-aware 80/10/10 split.",
+  "splits": {
+    "train": {
+      "count": 162,
+      "negative": 81,
+      "positive": 81,
+      "positive_percent": 50.0,
+      "mean_characters": 37.68518518518518,
+      "median_characters": 36.0,
+      "mean_words": 6.537037037037037,
+      "context_count": 0,
+      "irony_categories": [],
+      "csv_sha256": "078731704c623a54e3a4197e2fe089949bbdb4f56fa27c8fb76cc18cd899db93"
+    },
+    "dev": {
+      "count": 31,
+      "negative": 15,
+      "positive": 16,
+      "positive_percent": 51.61290322580645,
+      "mean_characters": 32.58064516129032,
+      "median_characters": 32.0,
+      "mean_words": 5.612903225806452,
+      "context_count": 0,
+      "irony_categories": [],
+      "csv_sha256": "501a3bcad7535ea4c08b09e6ee0b9fd7ed0855fd9ea194ba81414ba307df25be"
+    },
+    "test": {
+      "count": 31,
+      "negative": 16,
+      "positive": 15,
+      "positive_percent": 48.38709677419355,
+      "mean_characters": 37.83870967741935,
+      "median_characters": 34.0,
+      "mean_words": 5.580645161290323,
+      "context_count": 0,
+      "irony_categories": [],
+      "csv_sha256": "3e9c935ff12904b45960574eee8b8d263e0b8e13e4a8374a8e4822d95814b0c5"
+    }
+  },
+  "processed": {
+    "count": 224,
+    "negative": 112,
+    "positive": 112,
+    "positive_percent": 50.0,
+    "mean_characters": 37.0,
+    "median_characters": 35.0,
+    "mean_words": 6.276785714285714,
+    "context_count": 0,
+    "irony_categories": []
+  },
+  "removed_total": 4776,
+  "split_percentages": {
+    "train": 72.32142857142857,
+    "dev": 13.839285714285714,
+    "test": 13.839285714285714
+  },
+  "largest_group": 15,
+  "official_test_empty_text_rows": 0
+}

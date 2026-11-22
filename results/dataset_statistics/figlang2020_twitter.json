@@ -1,0 +1,111 @@
+{
+  "dataset": "figlang2020/twitter",
+  "seed": 42,
+  "metadata": {
+    "annotation": "Shared-task sarcasm labels; see task report for platform-specific collection and annotation",
+    "limitations": "No thread/author IDs. Shared context messages proxy conversation links; cannot guarantee identification of all original threads.",
+    "test_gold": "Both current upstream testing files contain 1800 gold labels."
+  },
+  "input": {
+    "count": 6800,
+    "negative": 3400,
+    "positive": 3400,
+    "positive_percent": 50.0,
+    "mean_characters": 138.31191176470588,
+    "median_characters": 118.0,
+    "mean_words": 27.748676470588236,
+    "context_count": 6800,
+    "irony_categories": []
+  },
+  "missing_original_text": 0,
+  "raw_missing_values": {
+    "label": 0,
+    "text": 0,
+    "context": 0,
+    "id": 0,
+    "partition": 0
+  },
+  "missing_values": {
+    "label": 0,
+    "text": 0,
+    "context": 0,
+    "id": 0,
+    "partition": 0,
+    "source": 0,
+    "platform": 0,
+    "original_text": 0,
+    "irony_type": 0,
+    "rephrasing": 0,
+    "conversation_id": 0,
+    "author": 0,
+    "parent_comment": 0
+  },
+  "markers_removed_rows": 0,
+  "trimmed_or_marker_cleaned_rows": 4,
+  "empty_text_rows": 0,
+  "exact_duplicate_rows": 333,
+  "conflicting_text_groups": 1,
+  "conflicting_rows": 2,
+  "near_duplicate_pairs_cosine_095": 46,
+  "removed_empty_or_conflicting_train_rows": 2,
+  "removed_duplicate_train_rows": 247,
+  "removed_train_rows_linked_to_official_test": 5,
+  "test_policy": "All loaded official test rows retained; linked training components excluded.",
+  "splits": {
+    "train": {
+      "count": 3797,
+      "negative": 1799,
+      "positive": 1998,
+      "positive_percent": 52.62048986041612,
+      "mean_characters": 135.89307347906242,
+      "median_characters": 117.0,
+      "mean_words": 27.11087700816434,
+      "context_count": 3797,
+      "irony_categories": [],
+      "csv_sha256": "b7caeca18a6c360e835c73c454eb545168cfca1d93d6ae8649638266f598dbd2"
+    },
+    "dev": {
+      "count": 949,
+      "negative": 450,
+      "positive": 499,
+      "positive_percent": 52.58166491043204,
+      "mean_characters": 134.1854583772392,
+      "median_characters": 115.0,
+      "mean_words": 26.893572181243414,
+      "context_count": 949,
+      "irony_categories": [],
+      "csv_sha256": "6cdccc0d2cb25bc35b2332963596921bcd684ccfda4e8d186529ec531bbd81c6"
+    },
+    "test": {
+      "count": 1800,
+      "negative": 900,
+      "positive": 900,
+      "positive_percent": 50.0,
+      "mean_characters": 143.4922222222222,
+      "median_characters": 127.0,
+      "mean_words": 28.983333333333334,
+      "context_count": 1800,
+      "irony_categories": [],
+      "csv_sha256": "ec2ef89324fa12c9dc71a534d3681de1480189ec2a9930171e4bd3008e2c1023"
+    }
+  },
+  "processed": {
+    "count": 6546,
+    "negative": 3149,
+    "positive": 3397,
+    "positive_percent": 51.89428658722884,
+    "mean_characters": 137.73510540788268,
+    "median_characters": 118.0,
+    "mean_words": 27.59425603421937,
+    "context_count": 6546,
+    "irony_categories": []
+  },
+  "removed_total": 254,
+  "split_percentages": {
+    "train": 58.00488848151543,
+    "dev": 14.497402994194928,
+    "test": 27.497708524289642
+  },
+  "largest_group": 9,
+  "official_test_empty_text_rows": 0
+}

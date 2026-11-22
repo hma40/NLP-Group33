@@ -1,0 +1,144 @@
+{
+  "dataset": "semeval2018",
+  "seed": 42,
+  "metadata": {
+    "annotation": "Manual fine-grained irony annotation",
+    "task_b_codes": {
+      "0": "non-ironic",
+      "1": "verbal irony with polarity contrast",
+      "2": "situational irony",
+      "3": "other verbal irony"
+    },
+    "join": "One-to-one tweet index within partition and binary-label agreement verified. Training index 2305 has | versus literal backslash-n line separators; normalized wording verified, Task A text retained. All other texts match exactly.",
+    "limitations": "Hashtag collection bias; subtype categories are not exact explicit/implicit incongruity labels."
+  },
+  "input": {
+    "count": 4618,
+    "negative": 2396,
+    "positive": 2222,
+    "positive_percent": 48.11606756171503,
+    "mean_characters": 87.76050238198354,
+    "median_characters": 89.0,
+    "mean_words": 13.837158943265482,
+    "context_count": 0,
+    "irony_categories": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  "missing_original_text": 0,
+  "raw_missing_values": {
+    "id": 0,
+    "tweet_index": 0,
+    "text": 0,
+    "label": 0,
+    "irony_type": 0,
+    "partition": 0
+  },
+  "missing_values": {
+    "id": 0,
+    "tweet_index": 0,
+    "text": 0,
+    "label": 0,
+    "irony_type": 0,
+    "partition": 0,
+    "source": 0,
+    "platform": 0,
+    "original_text": 0,
+    "context": 0,
+    "rephrasing": 0,
+    "conversation_id": 0,
+    "author": 0,
+    "parent_comment": 0
+  },
+  "markers_removed_rows": 424,
+  "trimmed_or_marker_cleaned_rows": 1606,
+  "empty_text_rows": 0,
+  "exact_duplicate_rows": 0,
+  "conflicting_text_groups": 0,
+  "conflicting_rows": 0,
+  "near_duplicate_pairs_cosine_095": 0,
+  "removed_empty_or_conflicting_train_rows": 0,
+  "removed_duplicate_train_rows": 0,
+  "removed_train_rows_linked_to_official_test": 0,
+  "test_policy": "All loaded official test rows retained; linked training components excluded.",
+  "splits": {
+    "train": {
+      "count": 3067,
+      "negative": 1538,
+      "positive": 1529,
+      "positive_percent": 49.8532768177372,
+      "mean_characters": 87.07238343658298,
+      "median_characters": 88.0,
+      "mean_words": 13.749918487120965,
+      "context_count": 0,
+      "irony_categories": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "csv_sha256": "f1868b759be2a5ee8b26fbabf4a9d0d378f950ab53d664b7bbfe78422558291c"
+    },
+    "dev": {
+      "count": 767,
+      "negative": 385,
+      "positive": 382,
+      "positive_percent": 49.80443285528031,
+      "mean_characters": 87.08213820078227,
+      "median_characters": 89.0,
+      "mean_words": 13.645371577574968,
+      "context_count": 0,
+      "irony_categories": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "csv_sha256": "952397a44ffef78f1f2d827fa97479be7767583e151f5e0e14af6173f54e2736"
+    },
+    "test": {
+      "count": 784,
+      "negative": 473,
+      "positive": 311,
+      "positive_percent": 39.66836734693878,
+      "mean_characters": 91.11607142857143,
+      "median_characters": 93.0,
+      "mean_words": 14.366071428571429,
+      "context_count": 0,
+      "irony_categories": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "csv_sha256": "b463ed01f2c78464d72187de6548edcd8a2afd417892c0ff1413c9c631939b27"
+    }
+  },
+  "processed": {
+    "count": 4618,
+    "negative": 2396,
+    "positive": 2222,
+    "positive_percent": 48.11606756171503,
+    "mean_characters": 87.76050238198354,
+    "median_characters": 89.0,
+    "mean_words": 13.837158943265482,
+    "context_count": 0,
+    "irony_categories": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  "removed_total": 0,
+  "split_percentages": {
+    "train": 66.41403204850585,
+    "dev": 16.60892161108705,
+    "test": 16.977046340407103
+  },
+  "largest_group": 2,
+  "official_test_empty_text_rows": 0
+}

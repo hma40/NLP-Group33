@@ -11,8 +11,12 @@ import pandas as pd
 
 try:
     from .data_common import RAW, SEED, digest, prepare, standardize
+    from .dataset_catalog import PREPARATION_CHOICES
+    from .figurative_datasets import hahackathon, semeval2022_idioms
 except ImportError:
     from data_common import RAW, SEED, digest, prepare, standardize
+    from dataset_catalog import PREPARATION_CHOICES
+    from figurative_datasets import hahackathon, semeval2022_idioms
 
 
 def semeval2018():
@@ -156,13 +160,13 @@ def sarc(sample_size, test_size):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--dataset', choices=['all', 'semeval2018', 'semeval2022', 'figlang2020', 'sarc', 'nikesh66'], default='all')
+    parser.add_argument('--dataset', choices=['all'] + PREPARATION_CHOICES, default='all')
     parser.add_argument('--sarc-sample-size', type=int, default=10000, help='Official training pool responses; 0 loads all (memory intensive)')
     parser.add_argument('--sarc-test-size', type=int, default=2000, help='Fixed official test sample; 0 for all')
     args = parser.parse_args()
     if args.sarc_sample_size < 0 or args.sarc_test_size < 0:
         parser.error('Sample sizes must be nonnegative')
-    for dataset in ['semeval2018', 'semeval2022', 'figlang2020', 'sarc', 'nikesh66']:
+    for dataset in PREPARATION_CHOICES:
         if args.dataset not in ['all', dataset]:
             continue
         if dataset == 'figlang2020':

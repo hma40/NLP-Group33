@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+checkpoints/
+.venv.venv/
+Data/Raw/**
+!Data/Raw/.gitkeep
+Data/Processed/**
+!Data/Processed/.gitkeep
+results/dataset_statistics/*_private.csv
+results/dataset_statistics/*_private.json
+*.pt
+*.pth
+*.safetensors
+.cache/
