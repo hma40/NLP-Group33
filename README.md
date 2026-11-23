@@ -62,6 +62,43 @@ Prepare a larger base pool once, then generate nested training subsets while ret
 
 The source pool must exceed the largest desired training size because of the 20% dev reservation and cleaning. The subset command rejects sizes larger than the actual prepared training set. Increasing the pool can require substantially more CPU/RAM for duplicate analysis; the default 10,000 + 2,000 selection is the locally validated configuration. Use `--sarc-test-size 0` only when full official-test preparation is feasible. Changing the source pool regenerates dev; use nested subsets of a fixed base for valid learning curves.
 
+## Transformer baseline
+
+`src/train_bert.py` fine-tunes `cardiffnlp/twitter-roberta-base` (or `roberta-base` via `--model`) on the `text` column only. Torch and transformers are kept out of `requirements.txt` so data preparation stays torch-free:
+
+```bash
+pip install -r requirements.txt -r requirements-bert.txt
+```
+
+Run the three steps in order, after preparing the dataset:
+
+```bash
+python src/train_bert.py --dataset semeval2018 --model cardiffnlp/twitter-roberta-base --search
+python src/train_bert.py --dataset semeval2018 --model cardiffnlp/twitter-roberta-base --final --seeds 42 43 44
+python src/train_bert.py --dataset semeval2018 --model cardiffnlp/twitter-roberta-base --eval-test
+```
+
+`--search` tries learning rates 1e-5/2e-5/3e-5 and batch sizes 16/32 for up to 5 epochs, scored on dev positive-class F1 (ties broken by macro F1), and freezes the choice in `selected_config.json`. It refuses to overwrite an existing frozen config unless `--force` is given. `--final` retrains that config with each seed and keeps the best dev epoch. Only `--eval-test` reads `test.csv`: it requires the frozen config and the final checkpoints, and scores each seed once. A repeat evaluation of the same seed is refused. `--limit N` uses the first N train and dev rows for debugging and writes to a separate `<model>-limitN` folder, which is gitignored.
+
+Runtime for SemEval-2018 with `twitter-roberta-base`: on an Apple M1 Pro (MPS) the search took about 22 minutes, the three seeds about 11 minutes and the test evaluation under a minute. A CUDA GPU such as a Colab T4 should be somewhat faster with mixed precision (roughly 15-25 minutes end to end; not measured). CPU-only training is not practical.
+
+Outputs land in `results/bert/<dataset>/<model_short_name>/`: `search.csv`, `selected_config.json`, `train_log_seed{N}.csv`, `predictions_{dev,test}_seed{N}.csv` (`id,label,pred,prob_positive`), `subtype_recall_dev.csv`, `test_eval_log.csv` and `summary.json`. The best-epoch weights go to `checkpoints/bert/` (gitignored). Tests run on CPU with a tiny random model: `python -m unittest tests.test_train_bert -v`.
+
+**Colab.** With no local GPU, select a GPU runtime and run:
+
+```bash
+!git clone https://github.com/hma40/NLP-Group33.git
+%cd NLP-Group33
+!pip install -r requirements.txt -r requirements-bert.txt
+!python src/download_data.py --dataset semeval2018
+!python src/preprocess.py --dataset semeval2018
+!python src/train_bert.py --dataset semeval2018 --search
+!python src/train_bert.py --dataset semeval2018 --final --seeds 42 43 44
+!python src/train_bert.py --dataset semeval2018 --eval-test
+```
+
+Copy `results/bert/` from the Colab session back into your local checkout before committing. Do not copy `checkpoints/`.
+
 ## Outputs and ownership
 
 - [Preparation checklist](DATA_PREPARATION_CHECKLIST.md): current progress and validation status.
