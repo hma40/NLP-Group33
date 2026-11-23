@@ -19,3 +19,5 @@ results/dataset_statistics/*_private.json
 instructions.md
 NOTES.md
 notes/
+# Debug runs made with train_bert.py --limit
+results/bert/**/*-limit*/
