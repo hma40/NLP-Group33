@@ -1,0 +1,18 @@
+{
+  "dataset": "semeval2018",
+  "model": "cardiffnlp/twitter-roberta-base",
+  "learning_rate": 2e-05,
+  "batch_size": 32,
+  "max_epochs": 5,
+  "best_search_epoch": 3,
+  "epoch_selection": "best dev epoch per run (f1_positive, then macro_f1)",
+  "warmup_fraction": 0.1,
+  "weight_decay": 0.01,
+  "max_length": 128,
+  "search_seed": 42,
+  "search_dev_f1_positive": 0.8079800498753117,
+  "search_dev_macro_f1": 0.7987987681070547,
+  "limit": null,
+  "search_seconds": 1295.2,
+  "frozen_at": "2026-11-23T02:29:12+00:00"
+}
