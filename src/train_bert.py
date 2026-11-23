@@ -31,6 +31,7 @@ from transformers import (AutoModelForSequenceClassification, AutoTokenizer,
                           DataCollatorWithPadding, get_linear_schedule_with_warmup)
 
 hf_logging.set_verbosity_error()
+hf_logging.disable_progress_bar()
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL = 'cardiffnlp/twitter-roberta-base'
@@ -301,6 +302,44 @@ def run_final(args, paths, tokenizer, train_set, dev_set, dev_frame, device):
     print(f'Dev F1 positive over seeds {args.seeds}: {f1["mean"]:.4f} ± {f1["std"]:.4f}', flush=True)
 
 
+def run_eval_test(args, paths, data_dir, device):
+    """Score each seed's saved best checkpoint on test exactly once. No tuning happens here."""
+    _, config_text = load_config(paths)
+    summary_path = paths['out'] / 'summary.json'
+    if not summary_path.exists():
+        raise SystemExit(f'{summary_path} not found. Run --final before --eval-test.')
+    summary = json.loads(summary_path.read_text())
+    if summary.get('config_sha256') != hashlib.sha256(config_text.encode()).hexdigest():
+        raise SystemExit('selected_config.json changed after --final; refusing to evaluate on test.')
+    # Check every seed before touching test, so a refusal never leaves a partial evaluation.
+    for seed in args.seeds:
+        if str(seed) not in summary['seeds'] or not (paths['checkpoints'] / f'seed{seed}').exists():
+            raise SystemExit(f'No final checkpoint for seed {seed}. Run --final --seeds {seed} first.')
+        if (paths['out'] / f'predictions_test_seed{seed}.csv').exists():
+            raise SystemExit(f'Seed {seed} was already evaluated on test; each model is scored once.')
+
+    test_frame = load_split(data_dir, 'test')
+    log_path = paths['out'] / 'test_eval_log.csv'
+    for seed in args.seeds:
+        checkpoint = paths['checkpoints'] / f'seed{seed}'
+        tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+        model = AutoModelForSequenceClassification.from_pretrained(checkpoint).to(device)
+        test_set = Encoded(test_frame, tokenizer, f'test seed{seed}')
+        loader = DataLoader(test_set, batch_size=64, collate_fn=DataCollatorWithPadding(tokenizer))
+        timestamp = datetime.now(timezone.utc).isoformat(timespec='seconds')
+        preds, prob = predict(model, loader, device)
+        write_predictions(paths['out'] / f'predictions_test_seed{seed}.csv', test_frame, preds, prob)
+        scores = {k: float(v) for k, v in metrics(test_set.labels, preds).items()}
+        summary['seeds'][str(seed)]['test'] = scores
+        summary['seeds'][str(seed)]['test_evaluated_at'] = timestamp
+        pd.DataFrame([{'seed': seed, 'timestamp_utc': timestamp, **scores}]).to_csv(
+            log_path, mode='a', header=not log_path.exists(), index=False)
+        print(f'[{timestamp}] seed {seed} test F1 positive={scores["f1_positive"]:.4f} '
+              f'macro F1={scores["macro_f1"]:.4f}', flush=True)
+    summary['test_mean_std'] = mean_std(summary['seeds'], 'test')
+    summary_path.write_text(json.dumps(summary, indent=2))
+
+
 # ---------------------------------------------------------------- CLI
 
 def parse_args(argv=None):
@@ -339,6 +378,8 @@ def main(argv=None):
     paths = output_paths(args)
     data_dir = args.data_dir / args.dataset
     device = pick_device(args.device)
+    if args.eval_test:
+        return run_eval_test(args, paths, data_dir, device)
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     dev_frame = load_split(data_dir, 'dev', args.limit)
     train_set = Encoded(load_split(data_dir, 'train', args.limit), tokenizer, 'train')
