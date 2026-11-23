@@ -11,6 +11,7 @@ Only the `text` column is used as model input. The default modes never read test
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import platform
 import random
@@ -221,6 +222,85 @@ def run_search(args, paths, tokenizer, train_set, dev_set, device):
           f'Frozen in {paths["config"]}', flush=True)
 
 
+def load_config(paths):
+    if not paths['config'].exists():
+        raise SystemExit(f'{paths["config"]} not found. Run --search first; the config must be '
+                         'frozen before final training or test evaluation.')
+    text = paths['config'].read_text()
+    return json.loads(text), text
+
+
+def hardware(device):
+    if device.type == 'cuda':
+        return torch.cuda.get_device_name(device)
+    if platform.system() == 'Darwin':
+        try:
+            return subprocess.run(['sysctl', '-n', 'machdep.cpu.brand_string'],
+                                  capture_output=True, text=True, check=True).stdout.strip()
+        except (OSError, subprocess.CalledProcessError):
+            pass
+    return platform.processor() or platform.machine()
+
+
+def write_predictions(path, frame, preds, prob):
+    pd.DataFrame({'id': frame['id'], 'label': frame['label'], 'pred': preds,
+                  'prob_positive': prob}).to_csv(path, index=False)
+
+
+def subtype_recall(frame, preds, seed):
+    """Recall on ironic rows split by irony_type (analysis only, never a model input)."""
+    types = frame['irony_type'].astype(str)
+    rows = []
+    for subtype in ['1', '2', '3']:
+        mask = (types == subtype).to_numpy()
+        if mask.any():
+            rows.append({'seed': seed, 'irony_type': int(subtype), 'n': int(mask.sum()),
+                         'recall': float(preds[mask].mean())})
+    return rows
+
+
+def mean_std(per_seed, split):
+    keys = ['precision', 'recall', 'f1_positive', 'macro_f1', 'accuracy']
+    runs = [r[split] for r in per_seed.values() if split in r]
+    if not runs:
+        return {}
+    return {k: {'mean': float(np.mean([r[k] for r in runs])),
+                'std': float(np.std([r[k] for r in runs], ddof=1)) if len(runs) > 1 else 0.0}
+            for k in keys}
+
+
+def run_final(args, paths, tokenizer, train_set, dev_set, dev_frame, device):
+    config, config_text = load_config(paths)
+    args.epochs = config['max_epochs']
+    summary = {'model': args.model, 'dataset': args.dataset, 'device': str(device),
+               'hardware': hardware(device), 'torch': torch.__version__,
+               'selected_config': config, 'std': 'sample standard deviation (ddof=1) across seeds',
+               'data': {'train': train_set.stats, 'dev': dev_set.stats}, 'seeds': {}}
+    subtypes = []
+    for seed in args.seeds:
+        save_dir = paths['checkpoints'] / f'seed{seed}'
+        log, best, seconds, n_params = train_run(args, tokenizer, train_set, dev_set, config['learning_rate'],
+                                                 config['batch_size'], seed, device, save_dir)
+        pd.DataFrame(log).to_csv(paths['out'] / f'train_log_seed{seed}.csv', index=False)
+        write_predictions(paths['out'] / f'predictions_dev_seed{seed}.csv', dev_frame, best['preds'], best['prob'])
+        subtypes += subtype_recall(dev_frame, best['preds'], seed)
+        summary['parameters'] = n_params
+        summary['seeds'][str(seed)] = {
+            'train_seconds': round(seconds, 1), 'best_epoch': best['epoch'],
+            'checkpoint': str(save_dir.relative_to(ROOT)) if save_dir.is_relative_to(ROOT) else str(save_dir),
+            'dev': {k: float(best[k]) for k in ['precision', 'recall', 'f1_positive', 'macro_f1', 'accuracy']}}
+    # Ties the checkpoints to the exact frozen config so --eval-test can verify it.
+    summary['config_sha256'] = hashlib.sha256(config_text.encode()).hexdigest()
+    summary['dev_mean_std'] = mean_std(summary['seeds'], 'dev')
+    (paths['out'] / 'summary.json').write_text(json.dumps(summary, indent=2))
+    if subtypes:
+        pd.DataFrame(subtypes).to_csv(paths['out'] / 'subtype_recall_dev.csv', index=False)
+    else:
+        print('No irony_type subtypes in this dataset; subtype_recall_dev.csv not written.', flush=True)
+    f1 = summary['dev_mean_std']['f1_positive']
+    print(f'Dev F1 positive over seeds {args.seeds}: {f1["mean"]:.4f} ± {f1["std"]:.4f}', flush=True)
+
+
 # ---------------------------------------------------------------- CLI
 
 def parse_args(argv=None):
@@ -260,10 +340,13 @@ def main(argv=None):
     data_dir = args.data_dir / args.dataset
     device = pick_device(args.device)
     tokenizer = AutoTokenizer.from_pretrained(args.model)
+    dev_frame = load_split(data_dir, 'dev', args.limit)
     train_set = Encoded(load_split(data_dir, 'train', args.limit), tokenizer, 'train')
-    dev_set = Encoded(load_split(data_dir, 'dev', args.limit), tokenizer, 'dev')
+    dev_set = Encoded(dev_frame, tokenizer, 'dev')
     if args.search:
         run_search(args, paths, tokenizer, train_set, dev_set, device)
+    else:
+        run_final(args, paths, tokenizer, train_set, dev_set, dev_frame, device)
 
 
 if __name__ == '__main__':
